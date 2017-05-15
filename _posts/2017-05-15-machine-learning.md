@@ -1,7 +1,8 @@
+---
 Title: Machine Learning in Fraud Analysis
 Date: 2017-05-15 10:20
 Category: Python, Machine Learning
-
+---
 # Enron Fraud Indentification
 
 The main purpose of this project is using machine learning algorithm to detect fraudsters. Those persons are main criminals in Enron scandal. We would like to make a learning model to predict those people by using multiple variables which are reported in financial sheets and emailling list. Because we have already know person of interests (POI), we could use supervised machine learning to do this task. 

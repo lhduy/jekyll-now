@@ -298,9 +298,8 @@ plt.ylabel('SKBest score')
 plt.title('Classifier')
 plt.show()
 ```
-
 ![_config.yml]({{ site.baseurl }}/images/Enron_ML_24_0.png)
-
+![_config.yml]({{ site.baseurl }}/images/config.png)
 
 According to the result of SelectKBest, I selected 6 features of interest since they have highest impact for the model fitting (score > 10). Clearly, we see that our new feature "fraction_to_poi" has high impact on the data model when it is at top 5th. Would this enginereed variable affect the validation of POIs in classifer ? To answer this question, I made an classifer testing with two feature lists: original list (without 'fraction_to_poi') and engineered list (with 'fraction_to_poi').
 

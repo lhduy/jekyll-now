@@ -1,7 +1,6 @@
 ---
-Title: Machine Learning in Fraud Analysis
-Date: 2017-05-15 10:20
-Category: Python, Machine Learning
+layout: post
+title: Machine Learning in Fraud Analysis
 ---
 # Enron Fraud Indentification
 

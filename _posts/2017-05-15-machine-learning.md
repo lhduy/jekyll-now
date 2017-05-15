@@ -299,8 +299,7 @@ plt.title('Classifier')
 plt.show()
 ```
 
-
-![png](images/Enron_ML_24_0.png)
+![_config.yml]({{ site.baseurl }}/images/Enron_ML_24_0.png)
 
 
 According to the result of SelectKBest, I selected 6 features of interest since they have highest impact for the model fitting (score > 10). Clearly, we see that our new feature "fraction_to_poi" has high impact on the data model when it is at top 5th. Would this enginereed variable affect the validation of POIs in classifer ? To answer this question, I made an classifer testing with two feature lists: original list (without 'fraction_to_poi') and engineered list (with 'fraction_to_poi').
@@ -589,9 +588,7 @@ plt.title('Classifier')
 plt.show()
 ```
 
-
-![png](images/Enron_ML_36_0.png)
-
+![_config.yml]({{ site.baseurl }}/images/Enron_ML_36_0.png)
 
 I found that Naive Bayes model had the highest F1-score. I decided to select Naive Bayes and Decision Tree for my model optimization. The final model is the one which highest F1 after parameter tuning.
 

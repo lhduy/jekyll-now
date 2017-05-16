@@ -2,4 +2,4 @@
 layout: post
 title: US Domestics Flight in 10 years
 ---
-{% include .html %}
+{% include flight.html %}

@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I am Duy Ha Ly. I am Vietnamese and currently living in Amsterdam. I have been working as Scientific Researcher for 3 years. Data science is my passion.
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+I like watching e-sport games.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[lhduy204@gmail.com](mailto:lhduy204@gmail.com)

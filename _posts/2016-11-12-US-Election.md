@@ -2,7 +2,8 @@
 layout: post
 title: "American Election 2016 in California"
 ---
-```{r echo = FALSE, message=FALSE, warning=FALSE}
+
+```r
 library(ggplot2)
 library(ggthemes)
 library(gridExtra)

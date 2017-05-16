@@ -919,7 +919,7 @@ The financial support is mostly reduced from people who has unknow occupation (m
 Similar to postive support exploration, I have very low correlation between features of interest.
 
 ## 4. Bivariate Analysis
-###Talk about some of the relationships you observed in this part of the investigation. How did the feature(s) of interest vary with other features in the dataset?
+### Talk about some of the relationships you observed in this part of the investigation. How did the feature(s) of interest vary with other features in the dataset?
 
 There is a high correlation between the number of contribution and the amount of money. Hence, a candidate needs to focus on gaining more contribution if he(she) want to increase his(her) election finance. In contrast, there is a risk of losing money when the number of contribution is also correlated to the amount of money loss. This pattern applies to candidate, cities and occupations.
 

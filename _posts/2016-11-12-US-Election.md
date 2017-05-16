@@ -2,18 +2,6 @@
 layout: post
 title: "American Election 2016 in California"
 ---
-
-```r
-library(ggplot2)
-library(ggthemes)
-library(gridExtra)
-library(dplyr)
-library(plotly)
-library(grid)
-library(DT)
-library(GGally)
-library(psych)
-```
 ## Introduction
 Welcome to my data exploration! Through this report, we will have an better insight about 2016 Presidential Campaign Finance 2016. The raw data is collected from website: http://fec.gov/disclosurep/pnational.do
 
@@ -35,8 +23,26 @@ The content of my report is organized by following sections:
 
 8. Reflection
 
+```r
+library(ggplot2)
+library(ggthemes)
+library(gridExtra)
+library(dplyr)
+library(plotly)
+library(grid)
+library(DT)
+library(GGally)
+library(psych)
+```
 ## Data structure
-
+```r
+pf <- read.csv('P00000001-CA.csv')
+pf$contbr_occupation[pf$contbr_occupation == "INFORMATION REQUESTED PER BEST EFFORTS"] <- "INFORMATION REQUESTED"
+names(pf)
+dim(pf)
+str(pf)
+pf_sample <- pf #using whole dataset
+```
 ```
 ##  [1] "cmte_id"           "cand_id"           "cand_nm"          
 ##  [4] "contbr_nm"         "contbr_city"       "contbr_st"        
@@ -83,7 +89,7 @@ In the horizontal bar chart above, it is not uniform distribution. Number of con
 
 
 
-![plot of chunk unnamed-chunk-5](Figs/unnamed-chunk-5-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-5-1.png)
 
 ```
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
@@ -92,17 +98,18 @@ In the horizontal bar chart above, it is not uniform distribution. Number of con
 
 There is 75% of contribution that is from 15 usd to 87.5 usd to their candidates. In order to have better observation, I plotted the money contribution in range between 15 to 100 usd.
 
-![plot of chunk unnamed-chunk-6](Figs/unnamed-chunk-6-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-6-1.png)
 
 The peak is 25 usd/contribution.
 Through the summary of financial contribution, there are negative and positive money. The positive is the money to candidate fund and the negative is the money out of candidate fund. So, I seperate this variable into 2 subsets. By doing this, I will have better comparison to determine who win and lose in fund raising in this American Election 2016.
 
 
 
-###1.1. Positive Contribution
+### 1.1. Positive Contribution
 Let's start with the positive subset. How is the contribution in this group ?
 
-![plot of chunk unnamed-chunk-8](Figs/unnamed-chunk-8-1.png)![plot of chunk unnamed-chunk-8](Figs/unnamed-chunk-8-2.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-8-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-8-2.png)
 
 ```
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
@@ -111,8 +118,9 @@ Let's start with the positive subset. How is the contribution in this group ?
 
 Top 5 candidates that get the largest contribution are Hilary Clinton, Bernard Sanders, Rafael "TED" Cruz, Donald Trump and Benjamin Carson respectively. However, Hilary Clinton and Bernard Sanders have large dominant positions. On the other hand, the money per contribution is very diversed and I have to use log10() function to display this distribution. The median is at 27 usd and 75% is from 15 to 130.5 usd. There are outliers with max at 10,800 usd.
 
-###1.2. Negative Contribution
-![plot of chunk unnamed-chunk-9](Figs/unnamed-chunk-9-1.png)![plot of chunk unnamed-chunk-9](Figs/unnamed-chunk-9-2.png)
+### 1.2. Negative Contribution
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-9-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-9-2.png)
 
 ```
 ##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
@@ -121,8 +129,8 @@ Top 5 candidates that get the largest contribution are Hilary Clinton, Bernard S
 
 In contrast group, top 5 candidates that get largest number of negative contribution are Hilary Clinton, Bernard Sanders, Rafael "TED" Cruz, Marco Rubio and Benjamin Carson. Except Donald Trump, the top 4 candidates have highest postive contribution and also have highest negative contribution during this American Election in CA. In study of money per contribution, the median is - 100 usd and 75% is from -38 to -500 usd. The minimum is at -10,500 usd.
 
-##2. Univariate Analysis
-###What is the structure of your dataset?
+## 2. Univariate Analysis
+### What is the structure of your dataset?
 There are 1,040,672 observations in the dataset with 19 variables. Except 'contb_receipt_amt', other features are ordered by factor variables with many levels.
 
 
@@ -149,25 +157,25 @@ There are 1,040,672 observations in the dataset with 19 variables. Except 'contb
 ##  $ X                : logi  NA NA NA NA NA NA ...
 ```
 
-###What is/are the main feature(s) of interest in your dataset ?
+### What is/are the main feature(s) of interest in your dataset ?
 The main features in this dataset are contb_receipt_amt (CONTRIBUTION RECEIPT AMOUNT) and cand_nm (CANDIDATE NAME). I would like to know the financial support of each candidate in this AMERiCAN ELECTION 2016. My idea is that I can make a prediction about the financial contribution based on other features.
 
-###What other features in the dataset do you think will help support your investigation into your feature(s) of interest?
+### What other features in the dataset do you think will help support your investigation into your feature(s) of interest?
 Name of city, occupation, candidate name likely contribute to the financial support.
 
-###Did you create any new variables from existing variables in the dataset?
+### Did you create any new variables from existing variables in the dataset?
 Currently I do not make new variable for univariate analysis. I found that it is not necessary to find new variable while I only have 1 numeric variable (contb_receipt_amt) and the rest is catergory variables.
 
-###Of the features you investigated, were there any unusual distributions? Did you perform any operations on the data to tidy, adjust, or change the form of the data? If so, why did you do this?
+### Of the features you investigated, were there any unusual distributions? Did you perform any operations on the data to tidy, adjust, or change the form of the data? If so, why did you do this?
 I encountered with the positive and negative sign in financial contribution. Therefore, I created two dataset which contains only positive or negative support. It help me to have a good overview of money raising and losing for each candidate. I used log_10 tranformation to study about the financial support because its distribution is very skewed.
 
 In positive support, contribution tends to give money at some fixed amount with a highest count around 50euro . So is negative support, the highest count is at 100 euro. 
 
-##3. Bivariate Plots Section
+## 3. Bivariate Plots Section
 Firstly, I extract information of some outliers from financial contribution.
 
-###3.1. Top contributors
-####3.1a. Positive contributor
+### 3.1. Top contributors
+#### 3.1a. Positive contributor
 
 ```
 ##            cand_nm  contbr_nm contbr_zip
@@ -196,11 +204,11 @@ Scott Walker is the one who received the biggest money from contributor Rick Mut
 ## [1] 2700
 ```
 
-![plot of chunk unnamed-chunk-12](Figs/unnamed-chunk-12-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-12-1.png)
 
 On 7-Jul, he contributed 10,800 usd. Later, he withrawed 8,100 usd then put in 2,700 usd again. After 4 month, he got back 2,700 usd. In final, he only contributed 2,700 usd to Scott Walker for this American Election.
 
-####3.1b. Negative contributor
+#### 3.1b. Negative contributor
 
 ```
 ##                 cand_nm       contbr_nm contbr_zip
@@ -292,11 +300,11 @@ The maximum money loss is 10,500 usd. Bernard Sanders is the one who lost larges
 ## [1] 1700
 ```
 
-![plot of chunk unnamed-chunk-14](Figs/unnamed-chunk-14-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-14-1.png)
 
 Morover, the interesting point is that this contributor did transaction to Bernard Sanders in multiple times. At last, the money for Bernard Sanders from this contributor is 1,700 usd in total.
 
-###3.2. Financial Support vs other features of interest
+### 3.2. Financial Support vs other features of interest
 Since I have 18 features ordered by factor variables and the number of factors in my interested variables are large. It would be wise to make additional selections for each variables.
 
 ```
@@ -324,7 +332,7 @@ Since I have 18 features ordered by factor variables and the number of factors i
 ## 5       Carson, Benjamin S.
 ```
 
-![plot of chunk unnamed-chunk-16](Figs/unnamed-chunk-16-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-16-1.png)
 
 In money gain:
 
@@ -391,7 +399,7 @@ In money loss:
 As number of contributions increases, the amount of money increases. This phenomenan happens in both money gain and money loss. The relationship between contributions and money apprers to be linear.
 
 Next, I observe the financial contribution and amount of money related to cities in LA.
-![plot of chunk unnamed-chunk-19](Figs/unnamed-chunk-19-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-19-1.png)
 
 In money gain:
 
@@ -458,7 +466,7 @@ In money loss:
 I have a high correlation between number of contribution and money gain per city. The city which has high number of contribution likely has high financial support for the election. Moreover, 75% of cities have contributed from 230 usd to 1827 usd (the median = 1827, the max = 14 millions).
 On the other side, money loss is larger when the number of contribution increases. There is 75% of cities which have money loss from 7,000 usd to 10,000 usd (the median = 1926 usd and the max = ~700,000 usd)
 
-![plot of chunk unnamed-chunk-22](Figs/unnamed-chunk-22-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-22-1.png)
 
 In money gain:
 
@@ -535,7 +543,7 @@ For extra bivariate plots, I explored the financial support of contributors in t
 
 
 
-###3.3. Extra exploration: Positive Contribution
+### 3.3. Extra exploration: Positive Contribution
 
 
 I started exploring subdata with positive contribution since it is the most important one.
@@ -552,10 +560,10 @@ I started exploring subdata with positive contribution since it is the most impo
 My data have 123,077 observatations with 4 selective variables.
 I want to look closer at box plots involving financial support and other variables. By limiting the y axis, the boxplot observation is better. Let start with candidate:
 
-####3.3a Financial Support vs Candidate Name
-![plot of chunk unnamed-chunk-28](Figs/unnamed-chunk-28-1.png)
+#### 3.3a Financial Support vs Candidate Name
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-28-1.png)
 
-![plot of chunk unnamed-chunk-29](Figs/unnamed-chunk-29-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-29-1.png)
 
 ```
 ## target_pf$candidate_name: Clinton, Hillary Rodham
@@ -581,10 +589,10 @@ I want to look closer at box plots involving financial support and other variabl
 
 All of 5 candidates have non-normal distribution of financial supports. Therefore, using median value is better choice than using mean value. Marco Rubio has biggest median of positive support (median = 100) and Bernard Sanders has smallest one (median = 27).
 
-####3.3b. Financial Support vs Location
-![plot of chunk unnamed-chunk-30](Figs/unnamed-chunk-30-1.png)
+#### 3.3b. Financial Support vs Location
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-30-1.png)
 
-![plot of chunk unnamed-chunk-31](Figs/unnamed-chunk-31-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-31-1.png)
 
 ```
 ## target_pf$city: BERKELEY
@@ -630,11 +638,11 @@ All of 5 candidates have non-normal distribution of financial supports. Therefor
 
 Most contributions (75%) from top 10 cities are varied from 18 to 100 usd. Beverly Hills is the city which has hightest median of contribution. Sacramento and San Jose are the least one.
 
-####3.3c Financial Support vs Occupation
+#### 3.3c Financial Support vs Occupation
 
-![plot of chunk unnamed-chunk-32](Figs/unnamed-chunk-32-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-32-1.png)
 
-![plot of chunk unnamed-chunk-33](Figs/unnamed-chunk-33-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-33-1.png)
 
 ```
 ## target_pf$occupation: ATTORNEY
@@ -720,9 +728,9 @@ Most contributions (75%) from top 10 cities are varied from 18 to 100 usd. Bever
 
 In next catergory, the most contribution to American Election is from retire people with have more than 20 millions usd (median = 28.445 and the = 8800)
 
-####3.3d. Cross Correlation between features of interest
+#### 3.3d. Cross Correlation between features of interest
 
-![plot of chunk unnamed-chunk-34](Figs/unnamed-chunk-34-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-34-1.png)
 
 In general, the correlation between my interested variables are very low. The contribution is very diversed in city, occupation, employer and money to candidates.
 
@@ -738,12 +746,12 @@ In general, the correlation between my interested variables are very low. The co
 ## Error in file(con, "rb"): cannot open the connection
 ```
 
-####3.4a. Financial Support vs Candidate Name
+#### 3.4a. Financial Support vs Candidate Name
 
 There are only 330 observations that satify my criteria.
-![plot of chunk unnamed-chunk-37](Figs/unnamed-chunk-37-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-37-1.png)
 
-![plot of chunk unnamed-chunk-38](Figs/unnamed-chunk-38-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-38-1.png)
 
 ```
 ## target_pf$candidate_name: Clinton, Hillary Rodham
@@ -769,10 +777,10 @@ There are only 330 observations that satify my criteria.
 
 Rubio has the largest range of losing money -500 to -2700 usd. Donal Trump has the shortest range of losing money.
 
-####3.4b. Financial Support vs Location
-![plot of chunk unnamed-chunk-39](Figs/unnamed-chunk-39-1.png)
+#### 3.4b. Financial Support vs Location
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-39-1.png)
 
-![plot of chunk unnamed-chunk-40](Figs/unnamed-chunk-40-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-40-1.png)
 
 ```
 ## target_pf_nega$city: BEVERLY HILLS
@@ -818,11 +826,11 @@ Rubio has the largest range of losing money -500 to -2700 usd. Donal Trump has t
 
 The city that have most money loss is Los Angeles with 700,000 usd (the median = -750, the max = -5,400)
 
-####3.4c. Financial Support vs Occupation
+#### 3.4c. Financial Support vs Occupation
 
-![plot of chunk unnamed-chunk-41](Figs/unnamed-chunk-41-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-41-1.png)
 
-![plot of chunk unnamed-chunk-42](Figs/unnamed-chunk-42-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-42-1.png)
 
 ```
 ## target_pf_nega$occupation: 
@@ -904,13 +912,13 @@ The city that have most money loss is Los Angeles with 700,000 usd (the median =
 
 The financial support is mostly reduced from people who has unknow occupation (median = 100, max = -10,500)
 
-####3.4d. Cross Correlation between features of interest
+#### 3.4d. Cross Correlation between features of interest
 
-![plot of chunk unnamed-chunk-43](Figs/unnamed-chunk-43-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-43-1.png)
 
 Similar to postive support exploration, I have very low correlation between features of interest.
 
-##4. Bivariate Analysis
+## 4. Bivariate Analysis
 ###Talk about some of the relationships you observed in this part of the investigation. How did the feature(s) of interest vary with other features in the dataset?
 
 There is a high correlation between the number of contribution and the amount of money. Hence, a candidate needs to focus on gaining more contribution if he(she) want to increase his(her) election finance. In contrast, there is a risk of losing money when the number of contribution is also correlated to the amount of money loss. This pattern applies to candidate, cities and occupations.
@@ -921,13 +929,13 @@ In location, the financial support also depends on the size of city. It is clear
 
 In occupation, the interesting point is that retire people contribute much money for American Election 2016. The variance of other features of interest hardly used to predict the financial contribution.
 
-###Did you observe any interesting relationships between the other features (not the main feature(s) of interest)?
+### Did you observe any interesting relationships between the other features (not the main feature(s) of interest)?
 There is no relationship between other features. It strongly depends on the trust of contributors during the election.
 
-###What was the strongest relationship you found?
+### What was the strongest relationship you found?
 The strongest relationship that can be found in my exploration is that the magnitude of financial support is strongly correlated with the number of contribution. It doesnot correlated with the social status or location of contributors.
 
-##5. Multivariate Plots Section
+## 5. Multivariate Plots Section
 
 I applied the same approach as Extra Exploration by create two subset from raw data with following criteria:
 
@@ -937,26 +945,26 @@ I applied the same approach as Extra Exploration by create two subset from raw d
 
 - In top 20 occupation.
 
-###5.1. Positive Contribution
+### 5.1. Positive Contribution
 
-####5.1a. Location
-![plot of chunk unnamed-chunk-44](Figs/unnamed-chunk-44-1.png)
+#### 5.1a. Location
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-44-1.png)
 
 
 
-![plot of chunk unnamed-chunk-46](Figs/unnamed-chunk-46-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-46-1.png)
 
 Hilary Clinton received more than 50% of support from 9 of 10 cities except Berkeley. People of Berkerly prefer Bernard Sanders. 
 
 
-####5.1b. Occupation
+#### 5.1b. Occupation
 Let take a look to the faction distribution for each candidate in top 20 jobs.
 
-![plot of chunk unnamed-chunk-47](Figs/unnamed-chunk-47-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-47-1.png)
 
 
 
-![plot of chunk unnamed-chunk-49](Figs/unnamed-chunk-49-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-49-1.png)
 
 17 of 20 occupation have more than 50% of financial support to Hilary Clinton. Only NOT EMPLOYED and SOFTWARE ENGINEER have more than 50% of their support to Bernard Sanders. Top 1 contributor, retire people also voted for Hilary Clinton.
 
@@ -966,73 +974,74 @@ Let take a look to the faction distribution for each candidate in top 20 jobs.
 
 The graph above shows the number of contribution of each occupation in each cities. In all of occupation, Los Angeles is the city which has biggest number of contribution from retire people. The second place is from retire people in San Francisco.
 
-###5.2. Negative Contribution
+### 5.2. Negative Contribution
 
-####5.2a. Location
-![plot of chunk unnamed-chunk-52](Figs/unnamed-chunk-52-1.png)
+#### 5.2a. Location
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-52-1.png)
 
 
 
-![plot of chunk unnamed-chunk-54](Figs/unnamed-chunk-54-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-54-1.png)
 
 Hilary Clinton (top 1 in positive contribution) received more than 50% of negative contribution in Oakland and San Francisco. Moreover, Marco Rubio is the one who lost biggest money in two largest cities: Los Angeles and San Francisco (6000 usd and 2000 usd respectively).
 
-####5.2b. Occupation
-![plot of chunk unnamed-chunk-55](Figs/unnamed-chunk-55-1.png)
+#### 5.2b. Occupation
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-55-1.png)
 
 
 
-![plot of chunk unnamed-chunk-57](Figs/unnamed-chunk-57-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-57-1.png)
 
 Obviously, Marco Rubio is the one who received the most number of negative contribution from top 20 opccupations. In group of unknow occupation, Hilary Clinton lost biggest money with ~ 400,000 usd.
 
 
 
-![plot of chunk unnamed-chunk-59](Figs/unnamed-chunk-59-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-59-1.png)
 
 In all of occupation, Los Angeles is the city which has biggest number of negative contribution from unknown people. The second place is from unknown people in San Francisco.
 
-##6. Multivariate Analysis
+## 6. Multivariate Analysis
 
-####Talk about some of the relationships you observed in this part of the investigation. Were there features that strengthened each other in terms of looking at your feature(s) of interest?
+#### Talk about some of the relationships you observed in this part of the investigation. Were there features that strengthened each other in terms of looking at your feature(s) of interest?
 
 The relationship in this part stated that the candidate who has large number of contribution, will have large financial support (ex: Hilary Clinton). This principle applied to other feature like location (cities) and social status (occupation).
 
 Hilary Clinton won in getting financial support from all of top 10 cities in CA as well as top 20 occupation. The negative finance is varied and depends on candidate name in difference location and occupation.
 
-####Were there any interesting or surprising interactions between features?
+#### Were there any interesting or surprising interactions between features?
 
 I didnot see any suprising interactions between features because the number of contribution is the decisive factor to quantify those features of interest and the financial support is strongly related to this number.
 
-##7. Final Plots and Summary
+## 7. Final Plots and Summary
 
-###Plot one
-![plot of chunk unnamed-chunk-60](Figs/unnamed-chunk-60-1.png)![plot of chunk unnamed-chunk-60](Figs/unnamed-chunk-60-2.png)
+### Plot one
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-60-1.png)
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-60-2.png)
 
 ```
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
 ##     0.01    15.00    27.00   130.50    96.50 10800.00
 ```
 
-###Description one
+### Description one
 
 The distribution of contribution per candidate is very skewed in California. The most favourite candidates are Hilary Clinton and Bernard Sanders with financial contribution > 400,000. Their contributions are 8 times larger than the rest. Additionally, it provides a good starting view to determine candidate's finance in this state. The amount of contribution is very diversed. Its range mainly from 15 to 96 usd.
 
-###Plot two
-![plot of chunk unnamed-chunk-61](Figs/unnamed-chunk-61-1.png)
+### Plot two
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-61-1.png)
 
-###Description Two
+### Description Two
 
 This is the most important plot when I easily observe the trending of financial support and the number of contribution. Clearly, the increase of contribution is correlated to the increase and decrease of money support for candidate (r > 0.90). In the other words, candidate who has large group of contributors will have high chance to get large money support and also have high risk to lose a considerable money. This relationship can be described in linear regression model. In conclusion, if candidates want to enlarge their Election funding, they need to make their group of contributors larger. 
 
-###Plot three
-![plot of chunk unnamed-chunk-62](Figs/unnamed-chunk-62-1.png)
+### Plot three
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-62-1.png)
 
-###Description three
+### Description three
 
 These two plots prove that there is no variables of interest that affect money support beside number of contribution. Large city has large money support. Large group of occupation has large money support. The financial contribution for each candidate varied depend on the number of contribution from each cities and each occupation. It stated that the location or the social status is not a factor for changing money support. The size is the main factor. On the other hand, the interesting point is that no labor group (retired or not employed) contributed more money than labor group in this election. Finally, the building of a preditive model is not a good approach for this dataset.
 
-##8. Reflection
+## 8. Reflection
 
 This financial contribution dataset contains information of more than 1 million observations across 19 variables in California from 2015 to 2016. In each individual variables, I started to select variable that helps me to answer my curiosity and leads to make observations on plots. At last, I explored the financial supports across the candidate, cities and occupation.
 

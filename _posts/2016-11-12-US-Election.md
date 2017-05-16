@@ -1,17 +1,7 @@
 ---
-title: "American Election 2016 in California"
 layout: post
-author: "Duy Ha Ly"
-date: "November 12, 2016"
-output:
-  md_document:
-    variant: markdown_github
+title: "American Election 2016 in California"
 ---
-
-
-
-
-
 ##Introduction
 Welcome to my data exploration! Through this report, we will have an better insight about 2016 Presidential Campaign Finance 2016. The raw data is collected from website: http://fec.gov/disclosurep/pnational.do
 

@@ -2,7 +2,18 @@
 layout: post
 title: "American Election 2016 in California"
 ---
-##Introduction
+```{r echo = FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(ggthemes)
+library(gridExtra)
+library(dplyr)
+library(plotly)
+library(grid)
+library(DT)
+library(GGally)
+library(psych)
+```
+## Introduction
 Welcome to my data exploration! Through this report, we will have an better insight about 2016 Presidential Campaign Finance 2016. The raw data is collected from website: http://fec.gov/disclosurep/pnational.do
 
 The content of my report is organized by following sections:
@@ -23,7 +34,7 @@ The content of my report is organized by following sections:
 
 8. Reflection
 
-##Data structure
+## Data structure
 
 ```
 ##  [1] "cmte_id"           "cand_id"           "cand_nm"          
@@ -64,8 +75,8 @@ The content of my report is organized by following sections:
 
 In summary, this dataset has more than 1 million observations. This is quite a big data that can help me to know about the financial contribution of voters in California area during American Election 2016. Each observation contains 19 variables with multiple ordered factors. There is only 1 numeric variable, the amount of contribution or "contb_receipt_amt".
 
-##1. Univariate Plots Section
-![plot of chunk unnamed-chunk-3](Figs/unnamed-chunk-3-1.png)
+## 1. Univariate Plots Section
+![_config.yml]({{ site.baseurl }}/images/unnamed-chunk-3-1.png)
 
 In the horizontal bar chart above, it is not uniform distribution. Number of contribution mainly go to Hilary Clinton or Bernard Sanders in CA. How is the distribution of money from contributors ?
 

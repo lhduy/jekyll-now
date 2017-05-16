@@ -5,6 +5,8 @@ title: "American Election 2016 in California"
 ## Introduction
 Welcome to my data exploration! Through this report, we will have an better insight about 2016 Presidential Campaign Finance 2016. The raw data is collected from website: http://fec.gov/disclosurep/pnational.do
 
+![My helpful screenshot]({{ site.url }}/images/US_election_2016.jpg)
+
 The content of my report is organized by following sections:
 
 1. Univariate Plots Section: multiple plots for individual variables.

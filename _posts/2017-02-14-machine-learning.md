@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Machine Learning in Fraud Analysis
-date: 2017-02-14
 ---
 
 # Enron Fraud Indentification

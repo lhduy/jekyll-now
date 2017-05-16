@@ -2,6 +2,7 @@
 layout: post
 title: Machine Learning in Fraud Analysis
 ---
+An approach to optimize fraud detection in big data world.
 
 ![title_pic]({{ site.baseurl }}http://blog.mailgun.com/content/images/2016/09/ml.jpg)
 

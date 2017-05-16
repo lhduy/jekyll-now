@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Hi everyone, I am online.
+title: It is online time.
 ---
-Thank you for your reading. I will do all my best to upload all my interest in this personal blog. I hope you will enjoy reading.
+This is my personal blog about data science projects that I am working on. I will do all my best to upload all my interests on this blog. I hope you will enjoy it.
 
 ![welcome_picture]({{ site.baseurl }}https://datasciencesurfer.files.wordpress.com/2013/04/data-science-history.jpg)
 

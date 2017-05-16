@@ -4,12 +4,11 @@ title: About
 permalink: /about/
 ---
 
-I am Duy Ha Ly. I am Vietnamese and currently working in Amsterdam. I have been Scientific Researcher for 3 years. Data science is my passion and I spend most of my time to do data wrangling.
-I am experienced in gathering, analysis and visualization to tell a good story about data.
+My name is Duy Ha Ly. I am Vietnamese and currently working in Amsterdam, Netherlands. Data science is my passion and I enjoy doing data wrangling. I am experienced in data gathering, analysis and visualization.
 
 ### More Information
 
-I like watching e-sport games (Dota, LoL).
+I like to play and watch e-sport games (Dota, LoL).
 
 ### Contact me
 

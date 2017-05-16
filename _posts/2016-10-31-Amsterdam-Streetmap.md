@@ -1,8 +1,10 @@
-
-# OpenStreetMap Data Case Study
-
+---
+layout: post
+title: Amsterdam OpenStreepMap Analytics
+---
 ![title_pic]({{ site.baseurl }}https://i.ytimg.com/vi/vSWxpLA7BBU/maxresdefault.jpg)
 
+# OpenStreetMap Data Case Study
 ## Map selection
 
 In this project, I choose the map of Amsterdam on Open Street Map website.

@@ -1,10 +1,12 @@
 
 # OpenStreetMap Data Case Study
 
+![title_pic]({{ site.baseurl }}https://i.ytimg.com/vi/vSWxpLA7BBU/maxresdefault.jpg)
+
 ## Map selection
 
 In this project, I choose the map of Amsterdam on Open Street Map website.
-- Amsterdam, The Netherlands: http://www.openstreetmap.org/export#map=13/52.3577/4.9054
+- [Amsterdam, The Netherlands](http://www.openstreetmap.org/export#map=13/52.3577/4.9054)
 
 This city is one of famous city on the world. I would like to know the best tips for travelling around this city through database queries. How can I contribute to improve this map for traveller ?
 

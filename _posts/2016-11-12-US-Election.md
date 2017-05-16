@@ -1,5 +1,6 @@
 ---
 title: "American Election 2016 in California"
+layout: post
 author: "Duy Ha Ly"
 date: "November 12, 2016"
 output:

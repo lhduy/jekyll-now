@@ -1,13 +1,8 @@
 ---
 layout: post
-title: You're up and running!
+title: Hi everyone, I am online.
 ---
+Thank you for your reading. I will do all my best to upload all my interest in this personal blog. I hope you will enjoy reading.
 
-Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
+[welcome_pic]({{site.url}}https://datasciencesurfer.files.wordpress.com/2013/04/data-science-history.jpg)
 
-![_config.yml]({{ site.baseurl }}/images/config.png)
-
-The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
-
-This is my testing phase for this blog.
-![_config.yml]({{ site.baseurl }}/images/Enron_ML_24_0.png)

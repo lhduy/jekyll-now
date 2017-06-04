@@ -5,7 +5,7 @@ title: "American Election 2016 in California"
 ![title_pic]({{ site.baseurl }}/images/US_election_2016.jpg)
 
 ## Introduction
-Welcome to my data exploration! Through this report, we will have an better insight about 2016 Presidential Campaign Finance 2016. The raw data is collected from website: http://fec.gov/disclosurep/pnational.do
+Welcome to my data exploration! Through this report, we will have an better insight about 2016 Presidential Campaign Finance 2016. The raw data is collected from website: [http://fec.gov/disclosurep/pnational.do](http://fec.gov/disclosurep/pnational.do)
 
 The content of my report is organized by following sections:
 

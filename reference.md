@@ -10,4 +10,6 @@ To be updated.
 
 2. [Build Blog for Data Analyst](http://blog.udacity.com/2016/02/how-to-build-a-data-analysis-portfolio-that-will-get-you-hired.html)
 
+3. [Data Visualization in Tableau](https://public.tableau.com/profile/duy.ha.ly#!/vizhome/Report_39/Sheet1?publish=yes)
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_8kepNTFwtQ" frameborder="0" allowfullscreen></iframe>

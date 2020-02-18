@@ -2,7 +2,7 @@
 layout: post
 title: Machine Learning in Fraud Analysis
 ---
-![title_pic]({{ site.baseurl }}http://blog.mailgun.com/content/images/2016/09/ml.jpg)
+![title_pic]({{ site.baseurl }}https://www.firstdata.com/en_ca/fraud-detect-solutions-new/FraudDetectIllustration.png)
 
 The main purpose of this project is using machine learning algorithm to detect fraudsters in Enron scandal. Those persons are main criminals in Enron scandal. We would like to make a learning model to predict those people by using multiple variables which are reported in financial sheets and emailling list. Because we have already known person of interests (POI), we could use supervised machine learning to do this task. 
 
